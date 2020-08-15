@@ -2,6 +2,8 @@
 import uuid
 from threading import local
 
+from django.utils.deprecation import MiddlewareMixin
+
 from django_logger.models import RemoteRequestLog
 
 
@@ -9,7 +11,7 @@ class RequestThreadlocal(local):
     request = object()
 
 
-class RequestLoggingMiddleware(object):
+class RequestLoggingMiddleware(MiddlewareMixin):
     """
     RequestLoggingMiddleware enables better logging of Django requests.
 

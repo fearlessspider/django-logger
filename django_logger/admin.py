@@ -51,15 +51,11 @@ class LogRecordAdmin(admin.ModelAdmin):
         )
     )
 
-    readonly_fields = LogRecord._meta.get_all_field_names()
-
 
 class RemoteRequestLogAdmin(admin.ModelAdmin):
     list_display = ('timestamp', 'status_code')
     list_filter = ('timestamp', 'status_code')
     search_fields = ('request', 'response', 'status_code')
-
-    readonly_fields = RemoteRequestLog._meta.get_all_field_names()
 
 
 class ActionLogAdmin(admin.ModelAdmin):
