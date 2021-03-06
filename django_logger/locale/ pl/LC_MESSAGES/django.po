@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 18:35+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: django_logger/admin.py:14
+msgid "Server details"
+msgstr ""
+
+#: django_logger/admin.py:24
+msgid "Request details"
+msgstr ""
+
+#: django_logger/admin.py:34
+msgid "Logging details"
+msgstr ""
+
+#: django_logger/admin.py:44
+msgid "Exception details"
+msgstr ""
+
+#: django_logger/models.py:57
+msgid "The application logging this record."
+msgstr ""
+
+#: django_logger/models.py:63
+msgid "The server logging this record."
+msgstr ""
+
+#: django_logger/models.py:70
+msgid "The IP address of the client making the request."
+msgstr ""
+
+#: django_logger/models.py:79 django_logger/models.py:190
+msgid ""
+"The primary key of the user making the request in which this record was "
+"logged."
+msgstr ""
+
+#: django_logger/models.py:84 django_logger/models.py:196
+msgid ""
+"The username of the user making the request in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:91 django_logger/models.py:130
+msgid "The UUID of the Django request in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:98
+msgid "The name of the logger of the record."
+msgstr ""
+
+#: django_logger/models.py:104
+msgid "The level of the log record (DEBUG, INFO...)"
+msgstr ""
+
+#: django_logger/models.py:158 django_logger/models.py:159
+msgid "Console"
+msgstr ""
+
+#: django_logger/models.py:160
+msgid "Admin"
+msgstr ""
+
+#: django_logger/models.py:172
+msgid "Log In"
+msgstr ""
+
+#: django_logger/models.py:173
+msgid "Log Out"
+msgstr ""
+
+#: django_logger/models.py:174
+msgid "Change Password"
+msgstr ""
+
+#: django_logger/models.py:175
+msgid "User Update"
+msgstr ""
+
+#: django_logger/models.py:176
+msgid "User Delete"
+msgstr ""
+
+#: django_logger/models.py:209
+msgid "The Backend/APP section in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:216
+msgid "The Backend/APP action in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:224
+msgid "The primary key of the object in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:231
+msgid "The name or definition of the object in which this record was logged."
+msgstr ""
+
+#: django_logger/models.py:242
+msgid "The previous value when this record was logged."
+msgstr ""
+
+#: django_logger/models.py:247
+msgid "The current value when this record was logged."
+msgstr ""

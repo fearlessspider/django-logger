@@ -49,11 +49,6 @@ class LogRecord(models.Model):
 
     application = models.CharField(
         max_length=256,
-        default=getattr(
-            settings,
-            'DJANGO_LOGGER_APP_NAME',
-            settings.ROOT_URLCONF.split('.')[0]
-        ),
         help_text=_("The application logging this record."),
         db_index=True
     )
@@ -115,9 +110,6 @@ class LogRecord(models.Model):
         permissions = (
             ("view_logs", "Can view log records"),
         )
-
-    def __unicode__(self):
-        return unicode(self.pk)
 
 
 class RemoteRequestLog(models.Model):
