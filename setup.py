@@ -7,6 +7,7 @@ from distutils.command.build import build as _build
 
 from setuptools import setup
 from setuptools.command.install_lib import install_lib as _install_lib
+from sphinx.setup_command import BuildDoc
 
 BASE_DIR = os.path.dirname((os.path.abspath(__file__)))
 
@@ -51,4 +52,5 @@ setup(name="django_logger",
         "build": build,
         "install_lib": install_lib,
         "compile_translations": compile_translations,
+        'build_sphinx': BuildDoc,
     },)
