@@ -10,7 +10,7 @@ from django.core import mail
 from django.urls import reverse
 
 from django_logger.middleware import RequestLoggingMiddleware
-from django_logger.models import LogRecord
+from django_logger.models import Event
 
 
 class ExceptionLoggingHandler(logging.Handler):
@@ -21,7 +21,7 @@ class ExceptionLoggingHandler(logging.Handler):
 
     def get_debug_page(self, record, request):
         """
-        Given a logging.LogRecord and a Django request that encountered an
+        Given a django_logger.Event and a Django request that encountered an
         exception, create a Django server error debugging page.
         """
 
@@ -36,7 +36,7 @@ class ExceptionLoggingHandler(logging.Handler):
 
     def get_stack_trace(self, record, request):
         """
-        Given a logging.LogRecord and a Django request that encountered an
+        Given a django_logger.Event and a Django request that encountered an
         exception, collect a stack trace.
         """
 
@@ -65,14 +65,11 @@ class DjangoDBHandler(ExceptionLoggingHandler):
         static_path = getattr(settings, "STATIC_ROOT", "")
 
         stack_trace = self.get_stack_trace(record, request)
-        millis = int(round(time.time() * 1000))
-        # file = open(static_path + "/../logs/" + str(millis) + ".html", "w")
-        # file.write(stack_trace)
-        # file.close()
-        #debug_page = self.get_debug_page(record, request)
+        debug_page = self.get_debug_page(record, request)
 
 
-        LogRecord.objects.create(
+        Event.objects.create(
+            application=settings.DJANGO_LOGGER_APPLICATION,
             logger=record.name,
             level=record.levelname,
             message=record.msg,
@@ -81,8 +78,7 @@ class DjangoDBHandler(ExceptionLoggingHandler):
             username=getattr(record, "username", "?"),
             user_pk=getattr(record, "user_pk", None),
             stack_trace=stack_trace,
-            # debug_page=debug_page // Need Handle Polish Unicode Characters
-            debug_page=''
+            debug_page=debug_page
         )
 
 
@@ -120,9 +116,7 @@ class AdminEmailHandler(ExceptionLoggingHandler):
         if record.exc_info:
             stack_trace = self.get_stack_trace(record, request)
 
-        # GOD DAMMIT CHARS
-        # message = u"%s\n\n%s" % (request_link, stack_trace)
-        message = ''
+        message = u"%s\n\n%s" % (request_link, stack_trace)
 
         mail.mail_admins(
             subject,

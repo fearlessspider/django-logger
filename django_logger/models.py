@@ -44,7 +44,7 @@ def now():
         return datetime.now()
 
 
-class LogRecord(models.Model):
+class Event(models.Model):
     timestamp = models.DateTimeField(db_index=True, default=now)
 
     application = models.CharField(
@@ -67,7 +67,7 @@ class LogRecord(models.Model):
         db_index=True
     )
 
-    user_pk = models.IntegerField(
+    user_id = models.IntegerField(
         blank=True,
         null=True,
         db_index=True,
@@ -112,7 +112,7 @@ class LogRecord(models.Model):
         )
 
 
-class RemoteRequestLog(models.Model):
+class Remote(models.Model):
     request = models.TextField()
     response = models.TextField(null=True)
     status_code = models.IntegerField(default=200)
@@ -137,10 +137,7 @@ class RemoteRequestLog(models.Model):
         )
 
 
-# --
-
-
-class ActionLog(models.Model):
+class Action(models.Model):
 
     SECTION_CONSOLE = 'console'
     SECTION_LOGIN = 'login_screen'
@@ -151,8 +148,6 @@ class ActionLog(models.Model):
         (SECTION_LOGIN, _('Console')),
         (SECTION_ADMIN, _('Admin')),
     )
-
-    # --
 
     ACTION_LOG_IN = 'log_in'
     ACTION_LOG_OUT = 'log_out'
@@ -168,16 +163,12 @@ class ActionLog(models.Model):
         (ACTION_USER_DELETE, _('User Delete')),
     )
 
-    # --
-
     timestamp = models.DateTimeField(
         db_index=True,
         default=now
     )
 
-    # --
-
-    user_pk = models.IntegerField(
+    user_id = models.IntegerField(
         db_index=True,
         help_text=_("The primary key of the user making the request in which this record was logged."),
     )
@@ -191,8 +182,6 @@ class ActionLog(models.Model):
     user_detail = models.TextField(
         null=True
     )
-
-    # --
 
     section = models.CharField(
         db_index=True,
@@ -208,9 +197,7 @@ class ActionLog(models.Model):
         help_text=_("The Backend/APP action in which this record was logged."),
     )
 
-    # --
-
-    object_pk = models.IntegerField(
+    object_id = models.IntegerField(
         db_index=True,
         null=True,
         help_text=_("The primary key of the object in which this record was logged."),
@@ -227,8 +214,6 @@ class ActionLog(models.Model):
         null=True
     )
 
-    # --
-
     value_previous = models.TextField(
         null=True,
         help_text=_("The previous value when this record was logged."),
@@ -238,8 +223,6 @@ class ActionLog(models.Model):
         null=True,
         help_text=_("The current value when this record was logged."),
     )
-
-    # --
 
     class Meta:
         app_label = 'django_logger'

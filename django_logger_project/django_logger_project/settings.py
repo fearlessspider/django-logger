@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_logger.middleware.RequestLoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'django_logger_project.urls'

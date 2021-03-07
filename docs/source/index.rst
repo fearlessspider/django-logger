@@ -12,7 +12,7 @@ Welcome to Django Logger's documentation!
 
 
 Django Logger models
-===================
+====================
 .. automodule:: django_logger.models
    :members:
 

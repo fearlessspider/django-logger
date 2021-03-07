@@ -9,6 +9,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "django_logge
 
 def boot_django():
     settings.configure(
+        DJANGO_LOGGER_APPLICATION="DJANGO LOGGER",
         BASE_DIR=BASE_DIR,
         DEBUG=True,
         DATABASES={
