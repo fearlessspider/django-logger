@@ -4,7 +4,7 @@ from threading import local
 
 from django.utils.deprecation import MiddlewareMixin
 
-from django_logger.models import RemoteRequestLog
+from django_logger.models import Remote
 
 
 class RequestThreadlocal(local):
@@ -29,11 +29,11 @@ class RequestLoggingMiddleware(MiddlewareMixin):
         request.uuid = uuid.uuid4().hex
         self.context.request = request
 
-        RemoteRequestLog.objects.create(request="", uuid=request.uuid, user_agent=request.META.get("HTTP_USER_AGENT"))
+        Remote.objects.create(request="", uuid=request.uuid, user_agent=request.META.get("HTTP_USER_AGENT"))
 
     def process_response(self, request, response):
-        obj, created = RemoteRequestLog.objects.get_or_create(uuid=request.uuid)
-        # obj.response = response // Must Handle Unicode <<<<<<<<<
+        obj, created = Remote.objects.get_or_create(uuid=request.uuid)
+        obj.response = response
         obj.status_code = response.status_code
         obj.save()
         return response
