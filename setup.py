@@ -46,11 +46,11 @@ class install_lib(_install_lib):
         _install_lib.run(self)
 
 
-setup(name="django_logger",
+setup(
     use_scm_version=True,
     cmdclass={
         "build": build,
         "install_lib": install_lib,
         "compile_translations": compile_translations,
         'build_sphinx': BuildDoc,
-    },)
+    })
