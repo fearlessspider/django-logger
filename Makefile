@@ -29,6 +29,8 @@ env:
 
 clean:
 	rm -rf $(VENV)
+	rm -rf build
+	rm -rf dist
 	find . -name "*.pyc" -exec rm -rf {} \;
 
 test_dependencies:
@@ -54,3 +56,8 @@ migrations:
 
 migrate:
 	$(PYTHON) migrate.py
+
+twine:
+	$(PYTHON) setup.py sdist
+	$(PYTHON) setup.py bdist_wheel
+	$(BIN)/twine upload dist/*

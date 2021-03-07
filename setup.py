@@ -47,7 +47,7 @@ class install_lib(_install_lib):
 
 
 setup(
-    use_scm_version=True,
+    #use_scm_version=True,
     cmdclass={
         "build": build,
         "install_lib": install_lib,
