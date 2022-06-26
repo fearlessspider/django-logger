@@ -16,3 +16,7 @@ Log exceptions, errors and user activity for Django
 3. Run python manage.py migrate to create the django_logger models.
 
 4. Visit http://127.0.0.1:8000/admin/ to see logs.
+
+## Support
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L37QTKJ)
